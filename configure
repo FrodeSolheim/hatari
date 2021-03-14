@@ -1,0 +1,24 @@
+#!/bin/sh
+
+set -e
+
+. fsbuild/system.sh
+
+# export CMAKE_PREFIX_PATH="`pwd`/fsdeps/_prefix"
+
+cd fsbuild/_build/hatari-src
+rm -f CMakeCache.txt
+
+if [ $SYSTEM_OS = "Windows" ]; then
+cmake \
+	-DCMAKE_C_COMPILER:STRING=gcc \
+	-G "MSYS Makefiles" \
+	.
+elif [ $SYSTEM_OS = "macOS" ]; then
+cmake \
+	-DENABLE_OSX_BUNDLE:BOOL=0 \
+	.
+else
+cmake \
+	.
+fi
