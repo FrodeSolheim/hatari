@@ -17,8 +17,14 @@ rm -Rf hatari-2.3.1 hatari-src
 tar xf ../_sources/hatari-2.3.1.tar.bz2
 mv hatari-2.3.1 hatari-src
 
+echo "Applying patches..."
 cd hatari-src
 # Don't want to link to (nor include) readline library
 sed -i.tmp "s/find_package(Readline)//g" CMakeLists.txt
+# Fix main function in source generators on Windows
+patch -p1 < ../../../mingw.patch
+# Skip building tests and tools to avoid patching for mingw
+sed -i.tmp "s/add_subdirectory(tests)//g" CMakeLists.txt
+sed -i.tmp "s/add_subdirectory(tools)//g" CMakeLists.txt
 
 echo "Bootstrap done"

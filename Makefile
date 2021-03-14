@@ -10,7 +10,7 @@ srcdir = fsbuild/_build/hatari-src
 all: build hatari${exe} tos.img
 
 build:
-	make -C ${srcdir}
+	make -C ${srcdir} VERBOSE=1
 
 hatari${exe}: ${srcdir}/src/hatari${exe}
 	cp ${srcdir}/src/hatari${exe} hatari${exe}
