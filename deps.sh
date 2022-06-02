@@ -2,7 +2,7 @@
 
 set -e
 
-fsdeps/dep/libpng
-fsdeps/dep/portmidi
-fsdeps/dep/SDL2
-fsdeps/dep/zlib
+fsdeps/packages/libpng
+fsdeps/packages/portmidi
+fsdeps/packages/SDL2
+fsdeps/packages/zlib

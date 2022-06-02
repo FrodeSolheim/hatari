@@ -2,6 +2,7 @@
 
 set -e
 
+echo "Removing old files..."
 rm -Rf fsbuild/_build
 rm -f hatari hatari.exe tos.img
 
